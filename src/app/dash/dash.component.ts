@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { Firestore ,doc,addDoc, collection, collectionData} from '@angular/fire/firestore';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CategorieInterface } from '../interfaces/categorie.interface';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { CommonModule } from '@angular/common';
+import { CategorieserService } from '../services/categorieser.service';
+import { Observable } from 'rxjs';
+Validators
+
+@Component({
+  selector: 'app-dash',
+  imports: [ReactiveFormsModule,CommonModule,],
+  templateUrl: './dash.component.html',
+  styleUrl: './dash.component.css'
+})
+export class DashComponent implements OnInit {
+
+
+
+  catgeoriges:CategorieInterface[]=[];
+
+  constructor(private servicecat:CategorieserService) {}
+  ngOnInit(): void {
+    // this.getallcategore();
+
+    this.servicecat.getallcat().subscribe((res:CategorieInterface[])=>{
+      console.log(res)
+      this.catgeoriges=res;
+    })
+}
+  // constructor(private firestore: AngularFirestore) {}
+  
+  catobj: CategorieInterface={
+    id:'',
+    name:''
+  }
+  
+  createCategorieForm=new FormGroup( {
+    name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]})
+  } );
+
+
+ addCategor(){
+  const {value}= this.createCategorieForm
+  
+  if (this.createCategorieForm.value.name !== undefined )  {
+    this.catobj.name = this.createCategorieForm.value.name;
+   
+  } else {
+    this.catobj.name = ''; // Or another default value
+  }
+  
+  this.servicecat.addcat(this.catobj);
+  
+ }
+
+ onDeleteCategorie(id:string){
+this.servicecat.delete(id);
+  }
+
+name2:string='';
+  onFormSubmit(){
+    // console.log(this.createCategorieForm.value.name);
+   
+ 
+    const categoryName = this.createCategorieForm.value.name; // Get the category name from the form
+
+    // console.log('Category Name:', categoryName); // Log the category name (optional)
+this.addCategor();
+    if (categoryName) {
+      const categoryData = { name: categoryName };
+
+      // Call the addCategory method and handle the result
+      console.log('Category is there!',categoryData);
+    } else {
+      console.log('Category name is required!');
+    }
+
+  }
+}

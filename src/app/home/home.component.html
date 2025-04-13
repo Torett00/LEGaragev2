@@ -4,7 +4,13 @@
 
 
 
-  
+  @if (authService.currentUsersig()){
+    <div class="buttondexonixon">
+    
+      <span (click)="logout()" class="glyphicon glyphicon-log-out">Log out</span> 
+    </div>
+ 
+  }
     <img src="assets/images/TITLEE2.svg" alt="SVG Image" class="imagef1">
     <!-- <img src="assets/images/icons8-facebook.svg" alt="Icon" alt="Clickable Image" (click)="navigateToFacebock()" class="face" width="66px"> -->
 

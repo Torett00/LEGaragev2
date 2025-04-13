@@ -1,0 +1,53 @@
+
+
+<div class="parent">
+  <div class="child1">Create Categorie<br>
+       
+    <br>
+    <form [formGroup]="createProduitForm" (ngSubmit)="onFormSubmit()"> 
+    <label for="title" class="form-label cta">  Enter Produit Name </label>
+  
+        <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+
+        <label for="title" class="form-label cta">  Enter Produit Prix </label>
+        <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
+
+        <label for="title" class="form-label cta">  Enter Categorie_name </label>
+        <select class="form-label cta" formControlName="categorie_name">
+          <option *ngFor="let opt of catgeoriges" [value]="opt.name" >{{opt.name}}</option>
+       </select>
+
+        <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
+  
+    </form>
+  </div>
+  <div class="child2">Produits <br>
+      <table class="tableCat">
+          <thead>
+            <tr>
+        
+              <th>Name</th>
+              <th>Prix</th>
+              <th>Categorie </th> 
+              <th> Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let prod of products">
+              <!-- <td>{{cat.id}}</td> -->
+              <td class="partpx">{{prod.name}}</td>
+              <td class="partpx">{{prod.prix}}</td>
+              <td class="partpx">{{prod.catagorie_name}}</td>
+              <td class="partpx" >
+                  <button *ngIf="prod.id"  (click)="onDeleteCategorie(prod.id)">Delete </button>
+                </td>
+            </tr>
+          
+  
+          
+          </tbody>
+        </table>
+  
+  
+  </div>
+</div>

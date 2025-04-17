@@ -23,7 +23,8 @@ export class LoginComponent {
   errorMessage: string | null = null;
 
   onSubmit(): void {
-    console.log('login');
+    console.log('login is done ');
+  
     const rawForm =this.form.getRawValue();
    this.authService
     .login(rawForm.email,rawForm.password)

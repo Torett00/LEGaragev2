@@ -1,0 +1,29 @@
+.title{
+text-align: center;
+margin-top: 10px;
+}
+.popupconatiner{
+    width: 400px;
+    height: 250px;
+  background-color: antiquewhite;
+}
+.inp{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+ 
+}
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* full height of viewport */
+  }
+  .cta{
+   position: relative;
+   left: 40px;
+  }
+  .btnadd{
+    width: 100px;
+
+  }

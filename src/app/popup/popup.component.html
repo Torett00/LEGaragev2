@@ -1,0 +1,17 @@
+<DIV class="popupconatiner">
+    <!-- <p>popup works!{{data.name3}}</p> -->
+<h1 class="title">Update Categorie</h1>
+<form [formGroup]="UpdateCategorieForm" (ngSubmit)="OnsubmitFormUpdate(catobj.id?? '')"> 
+<label for="title" class="form-label cta">  Enter New Categorie Name </label>
+        <div class="center-wrapper">
+            
+            <input  placeholder=" {{catobj.name}}" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+          </div>
+          
+            <div class="center-wrapper">
+                
+                <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
+
+            </div>
+</form>
+        </DIV>

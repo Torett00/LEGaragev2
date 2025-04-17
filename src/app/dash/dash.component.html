@@ -1,18 +1,21 @@
 
 
 <h1 class="dash"> Dashboord</h1>
+<p class="des" (click)="navigateToprod()" style="cursor: pointer;">Products List</p>
+
 <div class="parent">
     <div class="child1">Create Categorie<br>
        
-        <br>
+       
         <form [formGroup]="createCategorieForm" (ngSubmit)="onFormSubmit()"> 
         <label for="title" class="form-label cta">  Enter Categorie Name </label>
      
-            <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+            <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
         
             <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
-
+           
         </form>
+        
     </div>
     <div class="child2">Categories <br>
         <table class="tableCat">
@@ -20,6 +23,7 @@
               <tr>
           
                 <th>Name</th>
+                <th> Update</th>
                 <th> Delete</th>
               </tr>
             </thead>
@@ -27,17 +31,24 @@
               <tr  *ngFor="let cat of catgeoriges">
                 <!-- <td>{{cat.id}}</td> -->
                 <td class="partpx">{{cat.name}}</td>
-                
+              
+                 <td class="partpx">  <button class="updatebutton" (click)="openDialog(cat.id??'')">Update</button></td>
+             
                 <td class="partpx" >
                     <button *ngIf="cat.id" (click)="onDeleteCategorie(cat.id)">Delete </button>
                   </td>
+                
+                  
               </tr>
             
 
             
             </tbody>
+           
           </table>
-    
+        
+
+         
     
     </div>
 </div>

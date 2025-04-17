@@ -1,0 +1,33 @@
+<DIV class="popupconatiner">
+    <!-- <p>popup works!{{data.name3}}</p> -->
+<h1 class="title">Update Product</h1>
+<form  [formGroup]="UpdateProductForm"(ngSubmit)="OnsubmitFormUpdate(catobj.id?? '')" > 
+<label class="form-label cta" >  Enter New Product Name </label>
+        <div class="center-wrapper">
+            
+            <input  placeholder=" " type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+          </div>
+          <label for="title" class="form-label cta">  Enter New Catgeorie-name </label>
+
+          <div class="center-wrapper">
+
+              <select class="form-control inp" formControlName="categorie_name" >
+                  <option value=" {{catobj.categorie_name}}" disabled selected>Select a category</option>
+                  <option *ngFor="let opt of catgeoriges" [value]="opt.name" >{{opt.name}}</option>
+               </select>
+          </div>
+          <label for="title" class="form-label cta">  Enter New Product Prix </label>
+
+            <div class="center-wrapper">
+
+                <input  value={{catobj.prix}} type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
+
+            </div>
+         
+            <div class="center-wrapper">
+                
+                <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
+
+            </div>
+</form>
+        </DIV>

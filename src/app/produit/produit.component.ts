@@ -5,10 +5,14 @@ import { ProduitservService } from '../services/produitserv.service';
 import { CommonModule } from '@angular/common';
 import { CategorieInterface } from '../interfaces/categorie.interface';
 import { CategorieserService } from '../services/categorieser.service';
+import { CategorieComponent } from "../categorie/categorie.component";
+import { Router } from '@angular/router';
+import { PopupProductUpdateComponent } from '../popup-product-update/popup-product-update.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-produit',
-  imports: [ReactiveFormsModule,CommonModule,],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './produit.component.html',
   styleUrl: './produit.component.css'
 })
@@ -16,10 +20,36 @@ export class ProduitComponent implements OnInit {
   catgeoriges:CategorieInterface[]=[];
 
 
-  constructor(private serviceprod:ProduitservService,private servicecat:CategorieserService){}
+  constructor(private serviceprod:ProduitservService,private servicecat:CategorieserService,private router:Router,private dialogRef : MatDialog){}
   products:Iproduit[]=[];
 
- 
+  navigateTodash(): void {
+    this.router.navigate(['/dash']);  // Redirect to 'target' route
+  }
+
+  async openDialog(key:string){
+
+    const cat: Iproduit | null = await this.serviceprod.getCatById(key);
+
+    if (cat) {
+      console.log(cat.categorie_name,'categorie name');
+    
+      this.dialogRef.open(PopupProductUpdateComponent, {
+        data: {
+          product: {
+            name: cat.name,
+            id: cat.id,
+            prix:cat.prix,
+            categorie_name:cat.categorie_name
+            
+          }
+        
+      }});
+      
+    } else {
+      console.warn('Product not found for ID:', key);
+    }
+  }
   ngOnInit(): void {
     // this.getallcategore();
 
@@ -62,7 +92,7 @@ this.addCategor();
     
     if (this.createProduitForm.value.name !== undefined )  {
       this.catobj.name = this.createProduitForm.value.name;
-      this.catobj.catagorie_name = this.createProduitForm.value.categorie_name ?? '';
+      this.catobj.categorie_name = this.createProduitForm.value.categorie_name ?? '';
      this.catobj.prix=this.createProduitForm.value.prix ?? 0;
     } else {
       this.catobj.name = ''; // Or another default value
@@ -75,7 +105,7 @@ this.addCategor();
     id:'',
     name:'',
     prix:0,
-    catagorie_name:'',
+    categorie_name:'',
   }
   onDeleteCategorie(id:string){
     this.serviceprod.delete(id);

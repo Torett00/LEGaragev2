@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDocs, query, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { Iproduit } from '../interfaces/iproduit';
 import { Observable } from 'rxjs';
 
@@ -26,7 +26,7 @@ export class ProduitservService {
     const categoryExists = await this.checkIfproductExists(cat.name);
   
     if (categoryExists) {
-      console.log('Category with this name already exists!');
+      console.log('Product with this name already exists!');
       return; // Don't proceed if category exists
     }
   
@@ -51,16 +51,65 @@ export class ProduitservService {
     const categoryExists = await this.checkIfproductExists(cat.name);
   
     if (categoryExists) {
-      console.log('Category with this name already exists!');
+      console.log('Product with this name already exists!');
       return; // Don't proceed if category exists
     }
   
     // Add the new category to Firestore
     try {
       const categoryRef = await addDoc(collection(this.firestore, 'Products'), cat);
-      console.log('Category added successfully with ID:', categoryRef.id);
+      console.log('Product added successfully with ID:', categoryRef.id);
     } catch (error) {
-      console.error('Error adding category:', error);
+      console.error('Error adding Product:', error);
     }
   }
+
+  catobj: Iproduit={
+    id:'',
+    name:'',
+    prix:0,
+    categorie_name:'',
+  }
+  async getCatById(id: string): Promise<Iproduit | null> {
+    try {
+      const docRef = doc(this.firestore, 'Products', id);
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data() as Omit<Iproduit, 'id'>;
+      if (docSnap.exists()) {
+        
+        console.log(data,'dede')
+        console.log(docSnap.id)
+        console.log(data.name??'ssss');
+        console.log(docSnap.data.name);
+
+        this.catobj.id=docSnap.id;
+        this.catobj.name=data.name;
+        this.catobj.categorie_name=data.categorie_name;
+        this.catobj.prix=data.prix;
+        return this.catobj as Iproduit;
+      } else {
+        console.warn('No Product found with ID:', id);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error getting Product by ID:', error);
+      return null;
+    }
+  }
+
+  async updateprod(catId: string, updatedData: Partial<Iproduit>): Promise<void> {
+
+    try {
+      const catDocRef = doc(this.firestore, 'Products', catId);
+      console.log('now im int last ',catDocRef.id)
+  
+      console.log(updatedData,'ssss');
+      await updateDoc(catDocRef, updatedData);
+  
+      console.log('product updated successfully!');
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
+  }
+  
 }

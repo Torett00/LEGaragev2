@@ -1,19 +1,22 @@
 
+<h1 class="dash"> Dashboord</h1>
+<p class="des" (click)="navigateTodash()" style="cursor: pointer;">Categories List</p>
 
 <div class="parent">
-  <div class="child1">Create Categorie<br>
-       
+  <div class="child1">Create Product<br>
+
     <br>
     <form [formGroup]="createProduitForm" (ngSubmit)="onFormSubmit()"> 
-    <label for="title" class="form-label cta">  Enter Produit Name </label>
+    <label for="title" class="form-label cta">  Enter Product Name </label>
   
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
 
-        <label for="title" class="form-label cta">  Enter Produit Prix </label>
+        <label for="title" class="form-label cta">  Enter product Prix </label>
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
 
         <label for="title" class="form-label cta">  Enter Categorie_name </label>
-        <select class="form-label cta" formControlName="categorie_name">
+        <select class="form-control inp" formControlName="categorie_name" >
+          <option value="" disabled selected>Select a category</option>
           <option *ngFor="let opt of catgeoriges" [value]="opt.name" >{{opt.name}}</option>
        </select>
 
@@ -21,7 +24,7 @@
   
     </form>
   </div>
-  <div class="child2">Produits <br>
+  <div class="child2">List of Produits <br>
       <table class="tableCat">
           <thead>
             <tr>
@@ -29,6 +32,7 @@
               <th>Name</th>
               <th>Prix</th>
               <th>Categorie </th> 
+              <th> Update</th>
               <th> Delete</th>
             </tr>
           </thead>
@@ -37,7 +41,9 @@
               <!-- <td>{{cat.id}}</td> -->
               <td class="partpx">{{prod.name}}</td>
               <td class="partpx">{{prod.prix}}</td>
-              <td class="partpx">{{prod.catagorie_name}}</td>
+              <td class="partpx">{{prod.categorie_name}}</td>
+              <td class="partpx">  <button class="updatebutton" (click)="openDialog(prod.id??'')">Update</button></td>
+
               <td class="partpx" >
                   <button *ngIf="prod.id"  (click)="onDeleteCategorie(prod.id)">Delete </button>
                 </td>

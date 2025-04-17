@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { DashComponent } from './dash/dash.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { ProduitComponent } from './produit/produit.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 export const routes: Routes = [
@@ -21,13 +22,17 @@ export const routes: Routes = [
       {
         path: 'dash',
         component: DashComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: 'cat',
         component: CategorieComponent,
+        canActivate: [AuthGuardService],
       },  
       {
         path: 'prod',
         component: ProduitComponent,
+        canActivate: [AuthGuardService],
       },
+    
 ];

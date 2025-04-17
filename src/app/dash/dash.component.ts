@@ -7,6 +7,9 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { CommonModule } from '@angular/common';
 import { CategorieserService } from '../services/categorieser.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../popup/popup.component';
+import { Router } from '@angular/router';
 Validators
 
 @Component({
@@ -17,11 +20,40 @@ Validators
 })
 export class DashComponent implements OnInit {
 
-
-
   catgeoriges:CategorieInterface[]=[];
 
-  constructor(private servicecat:CategorieserService) {}
+  catobjaupdate: CategorieInterface={
+    id:'',
+    name:''
+  }
+  
+  constructor(private servicecat:CategorieserService,private dialogRef : MatDialog,private router: Router) {}
+
+  
+  navigateToprod(): void {
+    this.router.navigate(['/prod']);  // Redirect to 'target' route
+  }
+ async openDialog(key:string){
+
+    const cat: CategorieInterface | null = await this.servicecat.getCatById(key);
+
+    if (cat) {
+      console.log(cat.id,'ssssss');
+      console.log("hello khaled hhh")
+      this.dialogRef.open(PopupComponent, {
+        data: {
+          categorie: {
+            name: cat.name,
+            id: cat.id,
+            
+          }
+        
+      }});
+      console.log("hello khaled hhh2");
+    } else {
+      console.warn('Category not found for ID:', key);
+    }
+  }
   ngOnInit(): void {
     // this.getallcategore();
 
@@ -29,7 +61,9 @@ export class DashComponent implements OnInit {
       console.log(res)
       this.catgeoriges=res;
     })
+   
 }
+
   // constructor(private firestore: AngularFirestore) {}
   
   catobj: CategorieInterface={
@@ -79,4 +113,8 @@ this.addCategor();
     }
 
   }
+
+
+  
+
 }

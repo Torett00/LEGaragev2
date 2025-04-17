@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { CategorieInterface } from '../interfaces/categorie.interface';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDocs, query, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,31 @@ import { Observable } from 'rxjs';
 export class CategorieserService {
 
 constructor(private firestore:Firestore){}
+// async update(cat: CategorieInterface): Promise<void> {
+//   const categoryExists = await this.checkIfCategoryExists(cat.name);
+
+//   if (categoryExists) {
+
+//     console.log('Category with this name already exists!');
+//     return; // Don't proceed if category exists
+//   }
+// }
+
+async updatecat(catId: string, updatedData: Partial<CategorieInterface>): Promise<void> {
+
+  try {
+    const catDocRef = doc(this.firestore, 'Categorie', catId);
+    console.log('now im int last ',catDocRef.id)
+
+    
+    await updateDoc(catDocRef, updatedData);
+
+    console.log('Category updated successfully!');
+  } catch (error) {
+    console.error('Error updating category:', error);
+  }
+}
+
 async addcat(cat: CategorieInterface): Promise<void> {
   // Check if the category already exists
   const categoryExists = await this.checkIfCategoryExists(cat.name);
@@ -31,10 +56,40 @@ async addcat(cat: CategorieInterface): Promise<void> {
 let notref=collection(this.firestore,'Categorie')
 return collectionData(notref,{idField:'id'}) as Observable<CategorieInterface[]>
   }
+  catobj: CategorieInterface={
+    id:'',
+    name:''
+  }
+  async getCatById(id: string): Promise<CategorieInterface | null> {
+    try {
+      const docRef = doc(this.firestore, 'Categorie', id);
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data() as Omit<CategorieInterface, 'id'>;
+      if (docSnap.exists()) {
+        
+        console.log(data,'dede')
+      console.log(docSnap.id)
+        console.log(data.name??'ssss');
+        console.log(docSnap.data.name);
+
+        this.catobj.id=docSnap.id;
+        this.catobj.name=data.name;
+        return this.catobj as CategorieInterface;
+      } else {
+        console.warn('No category found with ID:', id);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error getting category by ID:', error);
+      return null;
+    }
+  }
+
   delete(key:string){
     const categorieDocRef = doc(this.firestore, 'Categorie', key); // Get the reference to the document by its ID
   return deleteDoc(categorieDocRef); // Delete the document from Firestore
   }
+ 
 
   async checkIfCategoryExists(name: string): Promise<boolean> {
     const categoriesRef = collection(this.firestore, 'Categorie');

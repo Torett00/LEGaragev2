@@ -17,15 +17,15 @@ export class AuthService{
     }
     currentUsersig=signal<UserInterface | null | undefined>(undefined)
    
-    // isLoggedIn(): boolean {
-    //     const user = this.firebaseAuth.currentUser;
-    //     console.log(user,"sss")
-    //     return true;
-    //   }
-    get isLoggedIn(): boolean {
-        const token = JSON.parse(localStorage.getItem('Token') || '{}');
-        return (token !== null) ? true : false;
+    isLoggedIn(): boolean {
+        const user = this.firebaseAuth.currentUser;
+        console.log(user,"sss")
+        return true;
       }
+    // get isLoggedIn(): boolean {
+    //     const token = JSON.parse(localStorage.getItem('Token') || '{}');
+    //     return (token !== null) ? true : false;
+    //   }
     register(email:string, username:string , password:string):Observable<void>{
 
         const promise=createUserWithEmailAndPassword(this.firebaseAuth,email,password).then((response)=>

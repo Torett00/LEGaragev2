@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate{
     return this.cureentuserser.currentUser$.pipe(
       filter((cureentuser)=>cureentuser !==undefined),
       map((cureentuser)=>{
-        if(cureentuser==null){
+        if(!cureentuser){
           this.router.navigateByUrl('login');
           console.log(false);
           return false;

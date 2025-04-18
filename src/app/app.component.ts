@@ -23,13 +23,14 @@ authService=inject(AuthService)
   this.currentUser.setCurentUser();
  },2000);
 
- 
+
  console.log(this.currentUser,'cureentuser');
 
       const testCollection=collection(this.firestore,'test');
       // addDoc(testCollection,{text:"i hate firebase"});
       this.authService.user$.subscribe((user)=> {
         if (user){
+          console.log('in th condition check')
           this.authService.currentUsersig.set({
             email:user.email!,
             username:user.displayName!,

@@ -13,13 +13,13 @@ export class CureentUserService {
   {id:string, name:string} | null | undefined
   >(undefined);
 
-  setCurentUser(){
-    if(localStorage.getItem('token')){
-      console.log("they are a user to set")
-      this.currentUser$.next({ id:'1', name:'foo'});
-
-    }else{
-      console.log("nuser are null")
+  setCurrentUser() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log("they are a user to set");
+      this.currentUser$.next({ id: '1', name: 'foo' }); // Normally you'd decode the token or fetch user data here
+    } else {
+      console.log("nuser are null");
       this.currentUser$.next(null);
     }
   }

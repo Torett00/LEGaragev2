@@ -11,25 +11,19 @@ export class AuthGuardService implements CanActivate{
    
    
 
-  constructor(private authService: AuthService, private router: Router,private cureentuserser:CureentUserService) {}
-  canActivate(): Observable<boolean>  {
-
-
-
-    return this.cureentuserser.currentUser$.pipe(
-      filter((cureentuser)=>cureentuser !==undefined),
-      map((cureentuser)=>{
-        if(!cureentuser){
+  constructor(private authService: AuthService, private router: Router,private currentUserService:CureentUserService) {}
+  canActivate(): Observable<boolean> {
+    return this.currentUserService.currentUser$.pipe(
+      filter((currentUser) => currentUser !== undefined), // wait until user is resolved (even if null)
+      map((currentUser) => {
+        if (!currentUser) {
           this.router.navigateByUrl('login');
           console.log(false);
           return false;
         }
         console.log(true);
         return true;
-      }
-
-      )
-    )
-    
+      })
+    );
   }
 }

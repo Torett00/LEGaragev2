@@ -20,8 +20,9 @@ authService=inject(AuthService)
   }
 
   public ngOnInit(): void {
-    this.currentUser.setCurrentUser(); // Initialize immediately
-
+ setTimeout(()=>{
+  this.currentUser.setCurrentUser();
+ },2000);
 
 
  console.log(this.currentUser,'cureentuser');

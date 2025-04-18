@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateCurrentUser, updateProfile, User, user } from "@angular/fire/auth";
-import { from, Observable } from "rxjs";
+import { from, Observable, switchMap } from "rxjs";
 import { UserInterface } from "./user.interface";
 import { CureentUserService } from "./cureent-user.service";
 
@@ -35,13 +35,23 @@ export class AuthService{
         return from(promise);
     }
 
-    login(email:string, password:string):Observable<void>{
+    // login(email:string, password:string):Observable<void>{
 
-        const promise=signInWithEmailAndPassword(this.firebaseAuth,email,password).then(()=>{});
+    //     const promise=signInWithEmailAndPassword(this.firebaseAuth,email,password).then(()=>{});
 
-        return from(promise);
+    //     return from(promise);
         
-    }
+    // }
+
+    login(email: string, password: string): Observable<string> {
+        return from(
+          signInWithEmailAndPassword(this.firebaseAuth, email, password)
+        ).pipe(
+          switchMap((userCredential) => 
+            from(userCredential.user.getIdToken()) // Extract token
+          )
+        );
+      }
     logout(): Observable<void>{
        const promise=signOut(this.firebaseAuth);
         // this.cureentuserser.setcurrentuserisnNull();

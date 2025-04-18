@@ -29,13 +29,25 @@ constructor(private currentUserService:CureentUserService){
     console.log('login is done ');
   
     const rawForm =this.form.getRawValue();
-   this.authService
-    .login(rawForm.email,rawForm.password)
-    .subscribe(()=>{
-      this.router.navigateByUrl('/home');
-    })
 
-    // this.authService.login(rawForm.email,rawForm.password).subscribe({
+
+    
+    this.authService.login(rawForm.email, rawForm.password)
+    .subscribe({
+      next: (token) => {
+        localStorage.setItem('token', token);
+        this.currentUserService.setCurrentUser(); // Update user state
+        this.router.navigate(['/dash']);
+      },
+      error: (err) => {
+        console.error('Login failed:', err);
+      }
+    });
+
+  
+  }
+}
+  // this.authService.login(rawForm.email,rawForm.password).subscribe({
     //   next: (response) => {
     //     localStorage.setItem('token', response.token);
     //     this.currentUserService.setCurrentUser();
@@ -45,5 +57,3 @@ constructor(private currentUserService:CureentUserService){
     //     // handle error
     //   }
     // });
-  }
-}

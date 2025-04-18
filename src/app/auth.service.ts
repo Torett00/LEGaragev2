@@ -13,6 +13,7 @@ export class AuthService{
 
     user$=user(this.firebaseAuth);
     constructor(private cureentuserser:CureentUserService){
+        this.cureentuserser.setCurrentUser();
 
     }
     currentUsersig=signal<UserInterface | null | undefined>(undefined)
@@ -46,4 +47,5 @@ export class AuthService{
         // this.cureentuserser.setcurrentuserisnNull();
         return from(promise);
 }
+
     }

@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { CureentUserService } from '../cureent-user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,9 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
   errorMessage: string | null = null;
+constructor(private currentUserService:CureentUserService){
 
+}
   onSubmit(): void {
     console.log('login is done ');
   
@@ -31,5 +34,16 @@ export class LoginComponent {
     .subscribe(()=>{
       this.router.navigateByUrl('/home');
     })
+
+    // this.authService.login(rawForm.email,rawForm.password).subscribe({
+    //   next: (response) => {
+    //     localStorage.setItem('token', response.token);
+    //     this.currentUserService.setCurrentUser();
+    //     this.router.navigate(['/dash']);
+    //   },
+    //   error: (error) => {
+    //     // handle error
+    //   }
+    // });
   }
 }

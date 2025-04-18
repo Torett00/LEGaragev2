@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CategorieserService } from '../services/categorieser.service';
 import { ProduitservService } from '../services/produitserv.service';
 import { CategorieInterface } from '../interfaces/categorie.interface';
+import { CureentUserService } from '../cureent-user.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit{
   catgeoriges:CategorieInterface[]=[];
 
   
-constructor(private router:Router,private servicecat:CategorieserService,private serviceprod:ProduitservService) {
+constructor(private router:Router,private servicecat:CategorieserService,private serviceprod:ProduitservService,private servicecurentuser:CureentUserService) {
   
 }
   ngOnInit(): void {
@@ -32,9 +33,18 @@ navigateToLogin(): void {
   this.router.navigate(['/login']);  // Redirect to 'target' route
 }
 
-  logout(): Observable<void>{
-    const promise=signOut(this.firebaseAuth);
-    this.navigateToLogin();
-     return from(promise);
+//   logout(): Observable<void>{
+//     const promise=signOut(this.firebaseAuth);
+//     this.navigateToLogin();
+//      return from(promise);
+// }
+
+logout(): Observable<void>{
+  const promise=signOut(this.firebaseAuth);
+  localStorage.removeItem('token'); 
+  this.servicecurentuser.setCurrentUser(); 
+  console.log('token are romoved');
+   // this.cureentuserser.setcurrentuserisnNull();
+   return from(promise);
 }
 }

@@ -54,6 +54,9 @@ export class AuthService{
       }
     logout(): Observable<void>{
        const promise=signOut(this.firebaseAuth);
+       localStorage.removeItem('token'); 
+       this.cureentuserser.setCurrentUser(); 
+       console.log('token are romoved');
         // this.cureentuserser.setcurrentuserisnNull();
         return from(promise);
 }

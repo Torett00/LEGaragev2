@@ -1,8 +1,8 @@
 /* styles.css */
-*{
+/* *{
     margin: 0;
     padding: 0;
-  }
+  } */
   .background {
    
       background-color: #DE9E36;  /* Example color */
@@ -10,7 +10,7 @@
       height: 100%;
         /* Ensure the background covers the whole viewport */
       margin: 0; 
-      
+      width: auto;
       border-radius: 5px; 
       padding-bottom: 10px;/* Remove any default margin */
     
@@ -21,9 +21,7 @@
       text-align: center;       /* Center text inside the title */
     }
    
-  .buttondexonixon{
-    
-  }
+
     /* Ensure the container takes up the full width */
   .container {
       display: flex;

@@ -36,6 +36,16 @@ gap: 20px; /* Optional: Adds space between the flex items */
   flex: 1; /* Makes this div flexible to take available space */
   min-width: 0; /* Avoids overflow */
 }
+.des{
+  position: relative;
+  left: 0px;
+  font-size: 20px;
+  background-color: #212821;
+  width: 120px;
+  color: #f1f1f1;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .cat{
   text-align: center;
   text-decoration: solid;
@@ -103,16 +113,7 @@ gap: 20px; /* Optional: Adds space between the flex items */
 }
 
 /* Style for each row */
-.des{
-  position: relative;
-  left: 0px;
-  font-size: 20px;
-  background-color: #3a3b1e;
-  width: 120px;
-  color: #f1f1f1;
-  text-align: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+
 
 /* Hover effect on table rows */
 .tableCat tr:hover {
@@ -162,7 +163,14 @@ button:hover {
   font-size: 20px;
  
 }
-
+.inp{
+  width: 50%;
+  height: 30px;
+  position: relative;
+  margin-bottom: 15px;
+  left: 10%;
+  
+}
 
 .btnadd{
   
@@ -172,5 +180,6 @@ margin-top:15px;
 width: 80px;
 height: 30px;
 }
-
 } 
+
+

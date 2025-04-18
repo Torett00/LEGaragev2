@@ -163,7 +163,14 @@ button:hover {
   font-size: 20px;
  
 }
-
+.inp{
+  width: 50%;
+  height: 30px;
+  position: relative;
+  margin-bottom: 15px;
+  left: 10%;
+  
+}
 
 .btnadd{
   
@@ -174,3 +181,5 @@ width: 80px;
 height: 30px;
 }
 } 
+
+

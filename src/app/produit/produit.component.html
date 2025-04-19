@@ -9,7 +9,7 @@
     <form [formGroup]="createProduitForm" (ngSubmit)="onFormSubmit()"> 
     <label for="title" class="form-label cta">  Product Name </label>
   
-        <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+        <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
 
         <label for="title" class="form-label cta">   product Prix </label>
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
@@ -41,7 +41,7 @@
             <tr  *ngFor="let prod of products">
               <!-- <td>{{cat.id}}</td> -->
               <td class="partpx">{{prod.name}}</td>
-              <td class="partpx">{{prod.prix}}</td>
+              <td class="partpx">{{prod.prix}} TND</td>
               <td class="partpx">{{prod.categorie_name}}</td>
               <td class="partpx">  <button class="updatebutton" (click)="openDialog(prod.id??'')">Update</button></td>
 

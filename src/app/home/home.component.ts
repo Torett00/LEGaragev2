@@ -50,7 +50,7 @@ navigateToFacebock(): void {
 }
 
 navigateToInsta(): void {
-  window.location.href = 'https://www.instagram.com/your_username'; // Replace with your Instagram URL
+  window.location.href = 'https://www.instagram.com/cafe_le_garage/	'; // Replace with your Instagram URL
 }
 //   logout(): Observable<void>{
 //     const promise=signOut(this.firebaseAuth);

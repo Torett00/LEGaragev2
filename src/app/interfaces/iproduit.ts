@@ -3,4 +3,5 @@ export interface Iproduit {
     name: string ;
     categorie_name:string ;
     prix:number;
+    description:string;
 }

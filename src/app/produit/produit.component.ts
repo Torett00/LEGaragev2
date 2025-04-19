@@ -40,7 +40,8 @@ export class ProduitComponent implements OnInit {
             name: cat.name,
             id: cat.id,
             prix:cat.prix,
-            categorie_name:cat.categorie_name
+            categorie_name:cat.categorie_name,
+            description:cat.description,
             
           }
         
@@ -65,7 +66,8 @@ export class ProduitComponent implements OnInit {
   createProduitForm=new FormGroup( {
     name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     categorie_name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
-    prix: new FormControl<number>(0,{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]})
+    prix: new FormControl<number>(0,{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
+    description: new FormControl<string>('',),
   } );
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
@@ -73,12 +75,13 @@ export class ProduitComponent implements OnInit {
  
     const produitName = this.createProduitForm.value.name;
     const produitprix = this.createProduitForm.value.prix; 
-    const category_Name = this.createProduitForm.value.categorie_name;  // Get the category name from the form
+    const category_Name = this.createProduitForm.value.categorie_name; 
+    const description = this.createProduitForm.value.description;  // Get the category name from the form
 
     // console.log('Category Name:', categoryName); // Log the category name (optional)
 this.addCategor();
     if (produitName) {
-      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name};
+      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
@@ -94,6 +97,7 @@ this.addCategor();
       this.catobj.name = this.createProduitForm.value.name;
       this.catobj.categorie_name = this.createProduitForm.value.categorie_name ?? '';
      this.catobj.prix=this.createProduitForm.value.prix ?? 0;
+     this.catobj.description=this.createProduitForm.value.description??'';
     } else {
       this.catobj.name = ''; // Or another default value
     }
@@ -106,6 +110,7 @@ this.addCategor();
     name:'',
     prix:0,
     categorie_name:'',
+    description:'',
   }
   onDeleteCategorie(id:string){
     this.serviceprod.delete(id);

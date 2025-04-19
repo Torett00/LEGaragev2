@@ -23,18 +23,28 @@
    
 
     /* Ensure the container takes up the full width */
-  .container {
+    .container {
       display: flex;
-      justify-content: space-between;  /* Space out the list and the image */
-      align-items: center;  /* Vertically align the items in the center */
-      padding: 20px;         /* Optional: add some padding around the container */
-      /* border: 2px solid #000000; */
-      margin: 20px 25px;
-      padding: 7px 5px;
+      flex-direction: column; /* Change to column layout */
+      padding: 0; /* Remove padding from container */
+      margin: 20px auto;
+      width: 90%;
       border-radius: 10px;
       background-color: #ffffff;
-      box-shadow: #BFBDC1;
-      margin-bottom: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      overflow: hidden; /* Ensures child elements respect border-radius */
+    }
+    
+    /* Category title styles */
+    .cafecat {
+      padding: 12px 20px;
+      margin: 0;
+      background-color: #bdb585; /* Light gray background */
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-bottom: 1px solid #e0e0e0; /* Subtle separator */
     }
       /* Ensure the container takes up the full width */
       .cafecat2{
@@ -61,19 +71,7 @@
     box-shadow: #BFBDC1;
     margin-bottom: 5px;
   }
-    .cafecat{
-     
-   position: relative;
-   left: 10%;
-   top :10px;
-   margin: 0px 0px;
-   font: italic small-caps bold 16px/2 cursive;
-  
-   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
-   font-size: 25px;
-   color: #ffffff;
    
-    }
   
     
     .list2 {
@@ -87,14 +85,13 @@
       padding-bottom: 20px;
       margin-left: 15px;
     }
-    .imagef1{
-      position: relative;
-      top: 20px;
-      left: 10px;
-      width:300px;
-   
+    .imagef1 {
+      width: 350px;
+      height: 150px;
+      display: block; /* Ensures margin: auto works */
+      margin: 0 auto 0 calc(50% - 175px - 30px); /* Centered + 20px right */
     }
-  
+ 
     @media (min-width: 377px) {
       .imagef1{
         position: relative;

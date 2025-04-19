@@ -7,10 +7,13 @@ import { CategorieserService } from '../services/categorieser.service';
 import { ProduitservService } from '../services/produitserv.service';
 import { CategorieInterface } from '../interfaces/categorie.interface';
 import { CureentUserService } from '../cureent-user.service';
+import { Iproduit } from '../interfaces/iproduit';
+import { CommonModule } from '@angular/common';
+import { FilterPipe } from '../filter-pipe';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -18,17 +21,26 @@ export class HomeComponent implements OnInit{
   authService=inject(AuthService);
   firebaseAuth=inject(Auth);
   catgeoriges:CategorieInterface[]=[];
+  products:Iproduit[]=[];
 
   
 constructor(private router:Router,private servicecat:CategorieserService,private serviceprod:ProduitservService,private servicecurentuser:CureentUserService) {
   
+}
+getProductsByCategory(categoryName: string) {
+  return this.products.filter(prod => prod.categorie_name === categoryName);
 }
   ngOnInit(): void {
     this.servicecat.getallcat().subscribe((res:CategorieInterface[])=>{
       console.log(res)
       this.catgeoriges=res;
     })
-  }
+
+    this.serviceprod.getallproduct().subscribe((res:Iproduit[])=>{
+      console.log(res)
+      this.products =res;
+  })
+}
 navigateToLogin(): void {
   this.router.navigate(['/login']);  // Redirect to 'target' route
 }

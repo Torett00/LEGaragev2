@@ -69,6 +69,7 @@ export class ProduitservService {
     name:'',
     prix:0,
     categorie_name:'',
+    description:'',
   }
   async getCatById(id: string): Promise<Iproduit | null> {
     try {
@@ -86,6 +87,7 @@ export class ProduitservService {
         this.catobj.name=data.name;
         this.catobj.categorie_name=data.categorie_name;
         this.catobj.prix=data.prix;
+        this.catobj.description=data.description;
         return this.catobj as Iproduit;
       } else {
         console.warn('No Product found with ID:', id);

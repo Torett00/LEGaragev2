@@ -3,7 +3,7 @@
     margin-top: 10px;
     }
     .popupconatiner{
-        width: 360px;
+        width: 350px;
         height: auto;
       background-color: antiquewhite;
     }
@@ -25,5 +25,6 @@
       }
       .btnadd{
         width: 100px;
+        height: 35px;
     
       }

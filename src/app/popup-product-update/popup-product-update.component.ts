@@ -21,6 +21,7 @@ export class PopupProductUpdateComponent {
     name:'',
     prix:0,
     categorie_name:'',
+    description:'',
   }
 
   prodconst: Iproduit={
@@ -28,6 +29,7 @@ export class PopupProductUpdateComponent {
     name:'',
     prix:0,
     categorie_name:'',
+    description:'',
   }
 
 
@@ -36,6 +38,7 @@ export class PopupProductUpdateComponent {
     name:'',
     prix:0,
     categorie_name:'',
+    description:'',
   }
   constructor(@Inject(MAT_DIALOG_DATA) public data: { product: Iproduit },private servicecat:CategorieserService,private serviceprod:ProduitservService) {
     
@@ -50,6 +53,7 @@ this.prodconst.categorie_name=this.data.product.categorie_name;
 this.prodconst.name=this.data.product.name;
 this.prodconst.prix=this.data.product.prix;
 this.prodconst.id=this.data.product.id;  
+this.prodconst.description=this.data.product.description;
     this.servicecat.getallcat().subscribe((res2:CategorieInterface[])=>{
       // console.log(res2)
       this.catgeoriges=res2;
@@ -60,7 +64,9 @@ this.prodconst.id=this.data.product.id;
   UpdateProductForm=new FormGroup( {
     name: new FormControl<string>('',{ nonNullable:true }),
     categorie_name: new FormControl<string>('',{ nonNullable:true }),
-    prix: new FormControl<string>('',{ nonNullable:true })
+    prix: new FormControl<string>('',{ nonNullable:true }),
+    description: new FormControl<string>('',{ nonNullable:true })
+
   } );
   
 
@@ -87,6 +93,11 @@ this.prodconst.id=this.data.product.id;
       this.newprod.prix=this.prodconst.prix;
     }else{
       this.newprod.prix = Number(this.UpdateProductForm.value.prix);
+    }
+    if(this.UpdateProductForm.value.description==''){
+      this.newprod.description=this.prodconst.description;
+    }else{
+      this.newprod.description=this.UpdateProductForm.value.description??'';
     }
 
    

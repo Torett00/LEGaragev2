@@ -94,7 +94,7 @@
       margin: 0 auto 0 calc(50% - 175px - 30px); /* Centered + 20px right */
     }
  
-    @media (min-width: 377px) {
+    @media (min-width: 300px) {
       .imagef1{
         position: relative;
         top: 20px;
@@ -265,4 +265,6 @@
     left: -5px;
   
   }
+
+
   

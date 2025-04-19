@@ -7,19 +7,19 @@
 
     <br>
     <form [formGroup]="createProduitForm" (ngSubmit)="onFormSubmit()"> 
-    <label for="title" class="form-label cta">  Enter Product Name </label>
+    <label for="title" class="form-label cta">  Product Name </label>
   
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
 
-        <label for="title" class="form-label cta">  Enter product Prix </label>
+        <label for="title" class="form-label cta">   product Prix </label>
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
 
-        <label for="title" class="form-label cta">  Enter Categorie_name </label>
+        <label for="title" class="form-label cta">   Categorie_name </label>
         <select class="form-control inp" formControlName="categorie_name" >
           <option value="" disabled selected>Select a category</option>
           <option *ngFor="let opt of catgeoriges" [value]="opt.name" >{{opt.name}}</option>
        </select>
-       <label for="title" class="form-label cta">  Enter description</label>
+       <label for="title" class="form-label cta">   description</label>
        <input  placeholder="description" type="title" id="form2Example2" class="form-control inp"  formControlName="description" />
         <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
   

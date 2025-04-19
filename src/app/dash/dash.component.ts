@@ -102,10 +102,10 @@ name2:string='';
     const categoryName = this.createCategorieForm.value.name; // Get the category name from the form
 
     // console.log('Category Name:', categoryName); // Log the category name (optional)
-this.addCategor();
-    if (categoryName) {
-      const categoryData = { name: categoryName };
 
+    if (categoryName ) {
+      const categoryData = { name: categoryName };
+      this.addCategor();
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {

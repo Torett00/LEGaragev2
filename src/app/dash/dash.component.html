@@ -13,7 +13,10 @@
             <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
         
             <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
-           
+            <!-- <div *ngIf="createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched" 
+            class="text-danger">
+         Category name is required!
+       </div> -->
         </form>
         
     </div>

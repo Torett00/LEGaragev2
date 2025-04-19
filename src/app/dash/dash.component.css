@@ -143,6 +143,7 @@ button:hover {
 /* Custom class for aligning the "Delete" column */
 .partpx {
   text-align: center;
+  color: #212821;
   
 }
 .updatebutton {

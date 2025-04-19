@@ -5,7 +5,7 @@
 <div class="parent">
   <div class="child1">Create Product<br>
 
-    <br>
+  
     <form [formGroup]="createProduitForm" (ngSubmit)="onFormSubmit()"> 
     <label for="title" class="form-label cta">  Product Name </label>
   
@@ -46,7 +46,7 @@
               <td class="partpx">  <button class="updatebutton" (click)="openDialog(prod.id??'')">Update</button></td>
 
               <td class="partpx" >
-                  <button *ngIf="prod.id"  (click)="onDeleteCategorie(prod.id)">Delete </button>
+                  <button *ngIf="prod.id" class="deletebutton"  (click)="onDeleteCategorie(prod.id)">Delete </button>
                 </td>
             </tr>
           

@@ -46,6 +46,9 @@ constructor(private currentUserService:CureentUserService){
 
   
   }
+  navigateToprod(): void {
+    this.router.navigate(['/register']);  // Redirect to 'target' route
+  }
 }
   // this.authService.login(rawForm.email,rawForm.password).subscribe({
     //   next: (response) => {

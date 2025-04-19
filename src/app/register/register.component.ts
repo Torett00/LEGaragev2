@@ -31,4 +31,7 @@ export class RegisterComponent {
       this.router.navigateByUrl('/home');
     })
   }
+  navigateToprod(): void {
+    this.router.navigate(['/login']);  // Redirect to 'target' route
+  }
 }

@@ -13,9 +13,9 @@
   </form> 
    -->
   
-   <h1 class="log">Login</h1>
+  
   <div class="d-flex justify-content-center align-items-center vh-100 ">
-    
+    <h1 class="log">Login</h1>
     <form class="w-70 " [formGroup]="form" (ngSubmit)="onSubmit()">
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-4">
@@ -50,23 +50,8 @@
   
       <!-- Register buttons -->
       <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
-        <p>or sign up with:</p>
-        <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
-  
-        <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
-  
-        <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-  
-        <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
+        <p>u are a Member ? <a class="goto" (click)="navigateToprod()">Login</a></p>
+        
       </div>
     </form>
   </div>

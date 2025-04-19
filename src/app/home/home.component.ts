@@ -45,6 +45,13 @@ navigateToLogin(): void {
   this.router.navigate(['/login']);  // Redirect to 'target' route
 }
 
+navigateToFacebock(): void {
+  window.location.href = 'https://www.facebook.com/profile.php?id=100086913193624'; // Replace with your Instagram URL
+}
+
+navigateToInsta(): void {
+  window.location.href = 'https://www.instagram.com/your_username'; // Replace with your Instagram URL
+}
 //   logout(): Observable<void>{
 //     const promise=signOut(this.firebaseAuth);
 //     this.navigateToLogin();

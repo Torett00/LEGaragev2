@@ -40,9 +40,10 @@
     .cafecat {
       padding: 12px 20px;
       margin: 0;
-      background-color: #b4a7a1; /* Light gray background */
+      background-color: #9DBEBB;
+      border: #ffffff solid 3px; /* Light gray background */
       color: #ffffff;
-      font-size: 1.2rem;
+      font-size: 15px;
       font-weight: 600;
       border-radius: 30px 0px;
       border-bottom: 1px solid #e0e0e0;

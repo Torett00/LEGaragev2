@@ -25,6 +25,7 @@ import { AuthGuardService } from './auth-guard.service';
       AngularFirestoreModule,
       AngularFireDatabaseModule, 
       MatDialogModule,
+      
     
       
     ],

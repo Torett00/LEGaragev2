@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../popup/popup.component';
 import { Router } from '@angular/router';
+
+
+
 Validators
 
 @Component({
@@ -93,6 +96,8 @@ export class DashComponent implements OnInit {
  onDeleteCategorie(id:string){
 this.servicecat.delete(id);
   }
+  showSuccessMessage = false;
+  successMessage = '';
   showNameRequiredError = false;
 name2:string='';
   onFormSubmit(){
@@ -107,6 +112,13 @@ name2:string='';
       const categoryData = { name: categoryName };
       this.addCategor();
       this.showNameRequiredError = false; 
+      // Show success message
+      this.showSuccessMessage = true;
+      this.successMessage = 'Category added successfully!';
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 2000);
+      this.createCategorieForm.reset();
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {

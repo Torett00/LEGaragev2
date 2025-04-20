@@ -24,7 +24,11 @@
          Category name is required!
        </div> -->
         </form>
-        
+        @if (showSuccessMessage) {
+          <div class="alertcatajouted">
+            {{ successMessage }}
+          </div>
+        }
     </div>
     <div class="child2">Categories <br>
         <table class="tableCat">
@@ -39,8 +43,9 @@
             <tbody>
               <tr  *ngFor="let cat of catgeoriges">
                 <!-- <td>{{cat.id}}</td> -->
-                <td class="partpx">{{cat.name}}</td>
-              
+                <td class="partpx" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
+                  {{cat.name}}
+                </td>              
                  <td class="partpx">  <button class="updatebutton" (click)="openDialog(cat.id??'')">Update</button></td>
              
                 <td class="partpx" >

@@ -83,6 +83,13 @@ gap: 20px; /* Optional: Adds space between the flex items */
   height: 40px;
   background-color: #1b7dcd;
 }
+.alertcatajouted{
+  position: relative;
+  margin-bottom: 10px;
+  color: rgb(104, 226, 17);
+  font-size: 12px;
+  left: 25%;
+}
 
 /* Styling for child2 */
 .child2 {
@@ -117,9 +124,8 @@ gap: 20px; /* Optional: Adds space between the flex items */
   padding: 8px;
   border-bottom: 1px solid #ddd;
   text-align: left;
-  font-size: small;
+  font-size: 10px;
 }
-
 /* Style for each row */
 
 
@@ -152,6 +158,7 @@ button:hover {
 .partpx {
   text-align: center;
   color: #212821;
+
   
 }
 .updatebutton {

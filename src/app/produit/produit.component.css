@@ -82,6 +82,8 @@ gap: 20px; /* Optional: Adds space between the flex items */
  margin-top:15px;
   width: 120px;
   height: 40px;
+  background-color: #1b7dcd;
+
 }
 
 /* Styling for child2 */

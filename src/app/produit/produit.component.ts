@@ -73,7 +73,7 @@ export class ProduitComponent implements OnInit {
   showNameRequiredError=false;
   showNameRequiredError1=false;
   showNameRequiredError2=false;
-  showNameRequiredError3=false;
+
 
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
@@ -88,8 +88,8 @@ export class ProduitComponent implements OnInit {
 
     if (produitName) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
-this.addCategor();
-this.showNameRequiredError = false; 
+
+        this.showNameRequiredError = false; 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {
@@ -99,8 +99,8 @@ this.showNameRequiredError = false;
     }
     if (produitprix) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
-this.addCategor();
-this.showNameRequiredError1 = false; 
+
+      this.showNameRequiredError1 = false; 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {
@@ -111,8 +111,7 @@ this.showNameRequiredError1 = false;
 
     if (category_Name) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
-this.addCategor();
-this.showNameRequiredError2 = false; 
+    this.showNameRequiredError2 = false; 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {
@@ -120,17 +119,14 @@ this.showNameRequiredError2 = false;
 
       console.log('Category name is required!');
     }
-    if (description) {
-      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
-this.addCategor();
-this.showNameRequiredError3 = false; 
-      // Call the addCategory method and handle the result
-      console.log('Category is there!',categoryData);
-    } else {
-      this.showNameRequiredError3 = true; 
-
-      console.log('description  is required!');
+    if(this.showNameRequiredError1==false && this.showNameRequiredError2==false && this.showNameRequiredError==false) {
+      this.addCategor();
+      console.log('product added sucsussfuly!');
+    }else{
+      console.log('some input aare umpty !');
     }
+  
+  
 
   }
   addCategor(){

@@ -74,7 +74,8 @@ export class ProduitComponent implements OnInit {
   showNameRequiredError1=false;
   showNameRequiredError2=false;
 
-
+  showSuccessMessage = false;
+  successMessage = '';
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
    
@@ -120,7 +121,12 @@ export class ProduitComponent implements OnInit {
       console.log('Category name is required!');
     }
     if(this.showNameRequiredError1==false && this.showNameRequiredError2==false && this.showNameRequiredError==false) {
+      this.showSuccessMessage = true;
+      this.successMessage = 'Product added successfully!';
       this.addCategor();
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 2000);
       console.log('product added sucsussfuly!');
     }else{
       console.log('some input aare umpty !');

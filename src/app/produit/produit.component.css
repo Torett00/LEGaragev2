@@ -60,6 +60,13 @@ gap: 20px; /* Optional: Adds space between the flex items */
   left: 25%;
   
 }
+.alertcatajouted{
+  position: relative;
+  margin-bottom: 10px;
+  color: rgb(104, 226, 17);
+  font-size: 10px;
+  left: 25%;
+}
 .cta{
  
   position: relative;
@@ -198,7 +205,13 @@ button:hover {
   left: 10%;
   
 }
-
+.alertcatajouted{
+  position: relative;
+  margin-bottom: 10px;
+  color: rgb(104, 226, 17);
+  font-size: 10px;
+  left: 10%;
+}
 .btnadd{
   
 position: relative;

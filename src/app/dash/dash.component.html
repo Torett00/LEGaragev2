@@ -11,6 +11,12 @@
         <label for="title" class="form-label cta">   Categorie Name </label>
      
             <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+            @if (createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched) {
+              <div class="requiredname">Name is required</div>
+            }
+            @if (showNameRequiredError) {
+              <div class="requiredname text-danger">Name is required</div>
+            }
         
             <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
             <!-- <div *ngIf="createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched" 

@@ -67,8 +67,14 @@ export class ProduitComponent implements OnInit {
     name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     categorie_name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     prix: new FormControl<number>(0,{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
-    description: new FormControl<string>('',),
+    description: new FormControl<string>('',{nonNullable:true ,validators:[Validators.required ]}),
   } );
+
+  showNameRequiredError=false;
+  showNameRequiredError1=false;
+  showNameRequiredError2=false;
+  showNameRequiredError3=false;
+
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
    
@@ -79,14 +85,51 @@ export class ProduitComponent implements OnInit {
     const description = this.createProduitForm.value.description;  // Get the category name from the form
 
     // console.log('Category Name:', categoryName); // Log the category name (optional)
-this.addCategor();
+
     if (produitName) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
-
+this.addCategor();
+this.showNameRequiredError = false; 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {
+      this.showNameRequiredError = true; 
+
+      console.log('product name is required!');
+    }
+    if (produitprix) {
+      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
+this.addCategor();
+this.showNameRequiredError1 = false; 
+      // Call the addCategory method and handle the result
+      console.log('Category is there!',categoryData);
+    } else {
+      this.showNameRequiredError1 = true; 
+
+      console.log('product  is required!');
+    }
+
+    if (category_Name) {
+      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
+this.addCategor();
+this.showNameRequiredError2 = false; 
+      // Call the addCategory method and handle the result
+      console.log('Category is there!',categoryData);
+    } else {
+      this.showNameRequiredError2 = true; 
+
       console.log('Category name is required!');
+    }
+    if (description) {
+      const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
+this.addCategor();
+this.showNameRequiredError3 = false; 
+      // Call the addCategory method and handle the result
+      console.log('Category is there!',categoryData);
+    } else {
+      this.showNameRequiredError3 = true; 
+
+      console.log('description  is required!');
     }
 
   }

@@ -93,7 +93,7 @@ export class DashComponent implements OnInit {
  onDeleteCategorie(id:string){
 this.servicecat.delete(id);
   }
-
+  showNameRequiredError = false;
 name2:string='';
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
@@ -106,9 +106,11 @@ name2:string='';
     if (categoryName ) {
       const categoryData = { name: categoryName };
       this.addCategor();
+      this.showNameRequiredError = false; 
       // Call the addCategory method and handle the result
       console.log('Category is there!',categoryData);
     } else {
+      this.showNameRequiredError = true; 
       console.log('Category name is required!');
     }
 

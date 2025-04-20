@@ -52,6 +52,9 @@ navigateToFacebock(): void {
 navigateToInsta(): void {
   window.location.href = 'https://www.instagram.com/cafe_le_garage/	'; // Replace with your Instagram URL
 }
+navigateToDash(): void {
+  this.router.navigate(['/dash']);  // Redirect to 'target' route
+}
 //   logout(): Observable<void>{
 //     const promise=signOut(this.firebaseAuth);
 //     this.navigateToLogin();

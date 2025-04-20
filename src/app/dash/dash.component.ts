@@ -36,6 +36,9 @@ export class DashComponent implements OnInit {
   navigateToprod(): void {
     this.router.navigate(['/prod']);  // Redirect to 'target' route
   }
+  navigateToHome(): void {
+    this.router.navigate(['/home']);  // Redirect to 'target' route
+  }
  async openDialog(key:string){
 
     const cat: CategorieInterface | null = await this.servicecat.getCatById(key);

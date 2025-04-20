@@ -21,7 +21,11 @@
       text-align: center;       /* Center text inside the title */
     }
    
-
+.des2{
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
     /* Ensure the container takes up the full width */
     .container {
       display: flex;

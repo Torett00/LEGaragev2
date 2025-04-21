@@ -12,9 +12,9 @@
         <label for="title" class="form-label cta">   Categorie Name </label>
      
             <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
-            @if (createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched) {
+            <!-- @if (createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched) {
               <div class="requiredname">Name is required</div>
-            }
+            } -->
             @if (showNameRequiredError) {
               <div class="requiredname text-danger">Name is required</div>
             }

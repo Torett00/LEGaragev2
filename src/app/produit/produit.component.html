@@ -10,36 +10,28 @@
     <label for="title" class="form-label cta">  Product Name </label>
   
         <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
-      @if(createProduitForm.get('name')?.invalid && createProduitForm.get('name')?.touched){
+      @if((createProduitForm.get('name')?.invalid && createProduitForm.get('name')?.touched)||showNameRequiredError){
         <div class="requiredname">Name is required</div>
       }
-      @if (showNameRequiredError) {
-        <div class="requiredname text-danger">Name is required</div>
-      }
+      
         <label for="title" class="form-label cta">   product Prix :( with Out DT) </label>
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
-        @if(createProduitForm.get('prix')?.invalid && createProduitForm.get('prix')?.touched){
-          <div class="requiredname">Prix is required</div>
+        @if((createProduitForm.get('prix')?.invalid && createProduitForm.get('prix')?.touched)||showNameRequiredError1){
+          <div class="requiredname text-danger">Prix is required</div>
         }
-        @if (showNameRequiredError1) {
-          <div class="requiredname text-danger">prix is required</div>
-        }
+       
         <label for="title" class="form-label cta">   Categorie_name </label>
         <select class="form-control inp" formControlName="categorie_name" >
           <option value="" disabled selected>Select a category</option>
           <option *ngFor="let opt of catgeoriges" [value]="opt.name" >{{opt.name}}</option>
        </select>
-       @if(createProduitForm.get('categorie_name')?.invalid && createProduitForm.get('categorie_name')?.touched){
+       @if((createProduitForm.get('categorie_name')?.invalid && createProduitForm.get('categorie_name')?.touched)||showNameRequiredError2){
         <div class="requiredname">categorie_name is required</div>
       }
-      @if (showNameRequiredError2) {
-        <div class="requiredname text-danger">Cat_name is required</div>
-      }
+     
        <label for="title" class="form-label cta">   description</label>
        <input  placeholder="description" type="title" id="form2Example2" class="form-control inp"  formControlName="description" />
-       @if(createProduitForm.get('description')?.invalid && createProduitForm.get('description')?.touched){
-        <div class="requiredname">description is required</div>
-      }
+      
      
         <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
         @if (showSuccessMessage) {

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategorieserService } from '../services/categorieser.service';
 import { CategorieInterface } from '../interfaces/categorie.interface';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +40,10 @@ export class PopupProductUpdateComponent {
     categorie_name:'',
     description:'',
   }
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { product: Iproduit },private servicecat:CategorieserService,private serviceprod:ProduitservService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { product: Iproduit },private servicecat:CategorieserService,private serviceprod:ProduitservService,
+  private dialogRef: MatDialogRef<PopupProductUpdateComponent> // Add this
+
+  ) {
     
     this.catobj = { ...data.product }; 
 
@@ -122,4 +125,7 @@ this.prodconst.description=this.data.product.description;
         console.error('Error updating category:', error);
       });
   }
+  closeDialog(): void {
+    this.dialogRef.close();
+  } 
 }

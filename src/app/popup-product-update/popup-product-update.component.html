@@ -1,6 +1,8 @@
 <DIV class="popupconatiner">
     <!-- <p>popup works!{{data.name3}}</p> -->
 <h1 class="title">Update Product</h1>
+<button class="close-btn" (click)="closeDialog()">×</button>
+
 <form  [formGroup]="UpdateProductForm"(ngSubmit)="OnsubmitFormUpdate(catobj.id?? '')" > 
 <label class="form-label cta" >  Enter New Product Name </label>
         <div class="center-wrapper">

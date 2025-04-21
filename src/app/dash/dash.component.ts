@@ -103,6 +103,8 @@ this.servicecat.delete(id);
   successMessage = '';
   showNameRequiredError = false;
 name2:string='';
+
+
   onFormSubmit(){
     // console.log(this.createCategorieForm.value.name);
    

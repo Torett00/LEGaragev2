@@ -7,7 +7,7 @@
 <label class="form-label cta" >  Enter New Product Name </label>
         <div class="center-wrapper">
             
-            <input  placeholder=" " type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
+            <input  placeholder=" {{catobj.name}}"type="title" id="form2Example2" class="form-control inp"  formControlName="name" />
           </div>
           <label for="title" class="form-label cta">  Enter New Catgeorie-name </label>
 
@@ -22,13 +22,13 @@
 
             <div class="center-wrapper">
 
-                <input  value={{catobj.prix}} type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
+                <input  placeholder=" {{catobj.prix}}" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
 
             </div>
             <label class="form-label cta" >   New Description </label>
             <div class="center-wrapper">
                 
-                <input  placeholder=" des" type="title" id="form2Example2" class="form-control inp"  formControlName="description" />
+                <input  placeholder=" {{catobj.description}}" type="title" id="form2Example2" class="form-control inp"  formControlName="description" />
               </div>
             
          

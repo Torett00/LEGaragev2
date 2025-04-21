@@ -3,14 +3,16 @@
     margin-top: 8%;
     }
     .popupconatiner{
-        width: 350px;
+        width: 330px;
         height: auto;
       background-color: antiquewhite;
     }
     .inp{
+      
         width: 200px;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        margin-top: 0%;
+        margin-bottom: 10px;
+
      
     }
     .center-wrapper {
@@ -21,7 +23,10 @@
       }
       .cta{
        position: relative;
-       left: 40px;
+       left: 20%;
+      }
+      .form-label{
+        margin-bottom: 0rem;
       }
       .btnadd{
         width: 100px;

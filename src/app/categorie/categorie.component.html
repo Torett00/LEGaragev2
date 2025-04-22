@@ -1,24 +1,39 @@
-<p>categorie works! zelcome to Categorie dash</p>
 
+<h1 class="dash"> Dashboord</h1>
+<p class="des" (click)="navigateToDash()" style="cursor: pointer;">Categories List</p>
 
-<h2>Sample Table</h2>
+<div class="parent">
+ 
+  <div class="child2">Browse our {{categoryName}} Collection<br>
+      <table class="tableCat">
+          <thead>
+            <tr>
+        
+              <th>Name</th>
+              <th>Prix</th>
+              <th>Categorie </th> 
+              <th> Update</th>
+              <th> Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let prod of filteredProducts">
+              <!-- <td>{{cat.id}}</td> -->
+              <td class="partpx">{{prod.name}}</td>
+              <td class="partpx">{{prod.prix}} TND</td>
+              <td class="partpx">{{prod.categorie_name}}</td>
+              <td class="partpx">  <button class="updatebutton" (click)="openDialog(prod.id??'')">Update</button></td>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>City</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  *ngFor="let cat of catgeoriges">
-      <td>{{cat.name}}</td>
-      <td>{{cat.id}}</td>
-      
-    </tr>
-   
+              <td class="partpx" >
+                  <button *ngIf="prod.id" class="deletebutton"  (click)="onDeleteCategorie(prod.id)">Delete </button>
+                </td>
+            </tr>
+          
   
-  </tbody>
-</table>
+          
+          </tbody>
+        </table>
+  
+  
+  </div>
+</div>

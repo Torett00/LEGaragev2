@@ -43,9 +43,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let cat of catgeoriges">
+              <tr  *ngFor="let cat of catgeoriges" (click)="navigateToProducts(cat.name)">
                 <!-- <td>{{cat.id}}</td> -->
-                <td class="partpx" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">
+                <td class="partpx" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
                   {{cat.name}}
                 </td>              
                  <td class="partpx">  <button class="updatebutton" (click)="openDialog(cat.id??'')">Update</button></td>

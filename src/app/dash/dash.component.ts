@@ -39,6 +39,11 @@ export class DashComponent implements OnInit {
   navigateToHome(): void {
     this.router.navigate(['/home']);  // Redirect to 'target' route
   }
+  navigateToProducts(categoryName: string) {
+    this.router.navigate(['/cat'], { queryParams: { category: categoryName } });
+    // or if you want to use route parameters:
+    // this.router.navigate(['/products', categoryName]);
+  }
  async openDialog(key:string){
 
     const cat: CategorieInterface | null = await this.servicecat.getCatById(key);

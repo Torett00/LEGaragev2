@@ -174,29 +174,34 @@ button:hover {
   font-size: 12px;
 }
 
-.des2 {
-  display: inline-flex; /* or 'flex' depending on your layout */
-  align-items: center;
-  gap: 8px; /* space between icon and text */
-  background-color: #c99d37; /* black background */
-  color: #fff; /* white text */
-  padding: 8px 16px;
-  height: 30px;
-  border-radius: 4px; /* optional rounded corners */
-  text-decoration: none; /* removes underline if it's a link */
-  transition: background-color 0.3s ease; /* smooth hover effect */
-  margin-left: auto; /* pushes it to the right in flex container */
-  /* or */
-  float: right; /* alternative if not using flex */
-  /* or */
+
+.home-button-container {
   position: absolute;
-  right:  0%;
-  top: 7.5%;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
 }
 
-.des2:hover {
-  background-color: #333; /* slightly lighter black on hover */
+.plain-home-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  margin: 0;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: inherit; /* Takes parent's text color */
+  font: inherit; /* Takes parent's font styles */
+}
+
+.plain-home-button:focus {
+  outline: none;
+}
+
+/* Optional hover effect */
+.plain-home-button:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 499px) {

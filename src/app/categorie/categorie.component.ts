@@ -51,16 +51,16 @@ ngOnInit(): void {
   // First load all products
   this.serviceprod.getallproduct().subscribe((res: Iproduit[]) => {
     this.products = res;
-    console.log('All products loaded:', this.products.length);
+    // console.log('All products loaded:', this.products.length);
     
     // Then check route params
     this.route.queryParams.subscribe(params => {
       this.categoryName = params['category'];
-      console.log('Category parameter:', this.categoryName);
+      // console.log('Category parameter:', this.categoryName);
       
       if (this.categoryName) {
         this.filteredProducts = this.getProductsByCategory(this.categoryName);
-        console.log('Filtered products:', this.filteredProducts);
+        // console.log('Filtered products:', this.filteredProducts);
       } else {
         // If no category, show all products or empty array
         this.filteredProducts = this.products; // or = []

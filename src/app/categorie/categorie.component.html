@@ -21,7 +21,7 @@
               <!-- <td>{{cat.id}}</td> -->
               <td class="partpx">{{prod.name}}</td>
               <td class="partpx">{{prod.prix}} TND</td>
-              <td class="partpx">{{prod.description}}</td>
+              <td class="partpx">{{prod.description ? prod.description : '-----------'}}</td>
               <td class="partpx">  <button class="updatebutton" (click)="openDialog(prod.id??'')">Update</button></td>
 
               <td class="partpx" >

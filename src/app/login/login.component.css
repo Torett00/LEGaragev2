@@ -10,4 +10,19 @@
 .goto{
     text-decoration: underline;
     color: rgb(0, 34, 255);
-}
+}.logo-container {
+    position: absolute;
+    top: 15%; /* Adjust this percentage to move it higher/lower */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0.5;
+  }
+  
+  /* For better control, you might want to add: */
+  .logo-image {
+    max-width: 150px; /* Adjust size as needed */
+    max-height: 150px;
+    width: auto;
+    height: auto;
+  }

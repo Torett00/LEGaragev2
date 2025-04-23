@@ -47,6 +47,9 @@ getProductsByCategory(categoryName: string) {
 navigateToDash(): void {
   this.router.navigate(['/dash']);  // Redirect to 'target' route
 }
+navigateToHome(): void {
+  this.router.navigate(['/home']);  // Redirect to 'target' route
+}
 ngOnInit(): void {
   // First load all products
   this.serviceprod.getallproduct().subscribe((res: Iproduit[]) => {

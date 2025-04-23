@@ -174,6 +174,31 @@ button:hover {
   font-size: 12px;
 }
 
+.des2 {
+  display: inline-flex; /* or 'flex' depending on your layout */
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  background-color: #c99d37; /* black background */
+  color: #fff; /* white text */
+  padding: 8px 16px;
+  height: 30px;
+  border-radius: 4px; /* optional rounded corners */
+  text-decoration: none; /* removes underline if it's a link */
+  transition: background-color 0.3s ease; /* smooth hover effect */
+  margin-left: auto; /* pushes it to the right in flex container */
+  /* or */
+  float: right; /* alternative if not using flex */
+  /* or */
+  position: absolute;
+  right:  0%;
+  top: 7.5%;
+}
+
+.des2:hover {
+  background-color: #333; /* slightly lighter black on hover */
+  cursor: pointer;
+}
+
 @media (max-width: 499px) {
  
   

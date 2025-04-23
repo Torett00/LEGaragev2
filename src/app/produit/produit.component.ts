@@ -26,6 +26,9 @@ export class ProduitComponent implements OnInit {
   navigateTodash(): void {
     this.router.navigate(['/dash']);  // Redirect to 'target' route
   }
+  navigateToHome(): void {
+    this.router.navigate(['/home']);  // Redirect to 'target' route
+  }
 
   async openDialog(key:string){
 

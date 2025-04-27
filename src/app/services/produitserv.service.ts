@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
+import { Injectable, Query } from '@angular/core';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, updateDoc, where } from '@angular/fire/firestore';
 import { Iproduit } from '../interfaces/iproduit';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ export class ProduitservService {
 
 
   getallproduct():Observable<Iproduit[]>{
-    let notref=collection(this.firestore,'Products')
+    let notref=query(collection(this.firestore,'Products'),orderBy('createdAt'));
     return collectionData(notref,{idField:'id'}) as Observable<Iproduit[]>
   }
 
@@ -24,7 +24,11 @@ export class ProduitservService {
   async addcat(cat: Iproduit): Promise<void> {
     // Check if the category already exists
     const categoryExists = await this.checkIfproductExists(cat.name);
-  
+     const categoryWithTimestamp = {
+      ...cat,
+      createdAt: serverTimestamp(), // Firebase server-side timestamp
+     // Clean up whitespace
+    };
     if (categoryExists) {
       console.log('Product with this name already exists!');
       return; // Don't proceed if category exists
@@ -32,37 +36,42 @@ export class ProduitservService {
   
     // Add the new category to Firestore
     try {
-      const categoryRef = await addDoc(collection(this.firestore, 'Products'), cat);
+      const categoryRef = await addDoc(collection(this.firestore, 'Products'), categoryWithTimestamp);
       console.log('produit added successfully with ID:', categoryRef.id);
     } catch (error) {
       console.error('Error adding produit:', error);
     }
   }
 
-
+ 
   async checkIfproductExists(name: string): Promise<boolean> {
     const produitsRef = collection(this.firestore, 'Products');
     const q = query(produitsRef, where('name', '==', name)); // Check for matching category name
     const querySnapshot = await getDocs(q);
     return !querySnapshot.empty; // Return true if a category with that name exists
   }
-  async addproduit(cat: Iproduit): Promise<void> {
-    // Check if the category already exists
-    const categoryExists = await this.checkIfproductExists(cat.name);
   
-    if (categoryExists) {
-      console.log('Product with this name already exists!');
-      return; // Don't proceed if category exists
-    }
+  // async addproduit(cat: Iproduit): Promise<void> {
+  //   // Check if the category already exists
+  //   const categoryExists = await this.checkIfproductExists(cat.name);
+  //   const categoryWithTimestamp = {
+  //     ...cat,
+  //     createdAt: serverTimestamp(), // Firebase server-side timestamp
+  //    // Clean up whitespace
+  //   };
+  //   if (categoryExists) {
+  //     console.log('Product with this name already exists!');
+  //     return; // Don't proceed if category exists
+  //   }
   
-    // Add the new category to Firestore
-    try {
-      const categoryRef = await addDoc(collection(this.firestore, 'Products'), cat);
-      console.log('Product added successfully with ID:', categoryRef.id);
-    } catch (error) {
-      console.error('Error adding Product:', error);
-    }
-  }
+  //   // Add the new category to Firestore
+  //   try {
+  //     const categoryRef = await addDoc(collection(this.firestore, 'Products'), categoryWithTimestamp);
+  //     console.log('Product added successfully with ID:', categoryRef.id);
+  //   } catch (error) {
+  //     console.error('Error adding Product:', error);
+  //   }
+  // }
 
   catobj: Iproduit={
     id:'',

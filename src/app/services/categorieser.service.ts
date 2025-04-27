@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { CategorieInterface } from '../interfaces/categorie.interface';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, updateDoc, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -43,19 +43,37 @@ async addcat(cat: CategorieInterface): Promise<void> {
     console.log('Category with this name already exists!');
     return; // Don't proceed if category exists
   }
-
+ // Add createdAt timestamp
+ const categoryWithTimestamp = {
+  ...cat,
+  createdAt: serverTimestamp(), // Firebase server-side timestamp
+  name: cat.name.trim() // Clean up whitespace
+};
   // Add the new category to Firestore
   try {
-    const categoryRef = await addDoc(collection(this.firestore, 'Categorie'), cat);
+    const categoryRef = await addDoc(collection(this.firestore, 'Categorie'), categoryWithTimestamp);
     console.log('Category added successfully with ID:', categoryRef.id);
   } catch (error) {
     console.error('Error adding category:', error);
   }
 }
-  getallcat():Observable<CategorieInterface[]>{
-let notref=collection(this.firestore,'Categorie')
-return collectionData(notref,{idField:'id'}) as Observable<CategorieInterface[]>
-  }
+//   getallcat():Observable<CategorieInterface[]>{
+// let notref=collection(this.firestore,'Categorie')
+// return collectionData(notref,{idField:'id'}) as Observable<CategorieInterface[]>
+//   }
+
+// getallcat(): Observable<CategorieInterface[]> {
+//   let notref = query(collection(this.firestore, 'Categorie'), orderBy('name'));
+//   return collectionData(notref, { idField: 'id' }) as Observable<CategorieInterface[]>;
+// }
+
+getallcat(): Observable<CategorieInterface[]> {
+  let notref = query(
+    collection(this.firestore, 'Categorie'),
+    orderBy('createdAt') // Sort by creation date
+  );
+  return collectionData(notref, { idField: 'id' }) as Observable<CategorieInterface[]>;
+}
   catobj: CategorieInterface={
     id:'',
     name:''

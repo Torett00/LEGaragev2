@@ -69,7 +69,7 @@ export class ProduitservService {
   //     const categoryRef = await addDoc(collection(this.firestore, 'Products'), categoryWithTimestamp);
   //     console.log('Product added successfully with ID:', categoryRef.id);
   //   } catch (error) {
-  //     console.error('Error adding Product:', error);
+  //     console.error('Error adding Product:', error); 
   //   }
   // }
 

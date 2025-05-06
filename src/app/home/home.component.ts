@@ -32,14 +32,14 @@ getProductsByCategory(categoryName: string) {
 }
   ngOnInit(): void {
     this.servicecat.getallcat().subscribe((res:CategorieInterface[])=>{
-      console.log(res)
+      // console.log(res)
       this.catgeoriges=res;
       // this.catgeoriges = res.sort((b, a) => a.name.localeCompare(b.name));
 
     })
 
     this.serviceprod.getallproduct().subscribe((res:Iproduit[])=>{
-      console.log(res)
+        // console.log(res)
       this.products =res;
   })
 }

@@ -16,10 +16,10 @@ export class CureentUserService {
   setCurrentUser() {
     const token = localStorage.getItem('token');
     if (token) {
-      console.log("they are a user to set");
+      // console.log("they are a user to set");
       this.currentUser$.next({ id: '1', name: 'foo' }); // Normally you'd decode the token or fetch user data here
     } else {
-      console.log("nuser are null");
+      // console.log("nuser are null");
       this.currentUser$.next(null);
     }
   }

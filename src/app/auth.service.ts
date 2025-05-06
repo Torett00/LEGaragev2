@@ -20,7 +20,7 @@ export class AuthService{
    
     isLoggedIn(): boolean {
         const user = this.firebaseAuth.currentUser;
-        console.log(user,"sss")
+        // console.log(user,"sss")
         return true;
       }
     // get isLoggedIn(): boolean {
@@ -56,7 +56,7 @@ export class AuthService{
        const promise=signOut(this.firebaseAuth);
        localStorage.removeItem('token'); 
        this.cureentuserser.setCurrentUser(); 
-       console.log('token are romoved');
+      //  console.log('token are romoved');
         // this.cureentuserser.setcurrentuserisnNull();
         return from(promise);
 }

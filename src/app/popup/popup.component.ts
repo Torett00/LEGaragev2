@@ -26,7 +26,7 @@ export class PopupComponent {
     private dialogRef: MatDialogRef<PopupComponent> // Add this
   ) {
     this.catobj = { ...data.categorie };
-    console.log(data.categorie);
+    // console.log(data.categorie);
   }
 
 
@@ -53,7 +53,7 @@ export class PopupComponent {
     
     this.servicecat.updatecat(id, updatedData)
     .then(() => {
-      console.log('Category updated!');
+      // console.log('Category updated!');
       this.showNameRequiredError = false; 
 
       // Optionally close modal or reset form here

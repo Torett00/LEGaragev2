@@ -58,7 +58,7 @@ export class ProduitComponent implements OnInit {
     // this.getallcategore();
 
     this.serviceprod.getallproduct().subscribe((res:Iproduit[])=>{
-      console.log(res)
+      // console.log(res)
       this.products =res;
     })
     this.servicecat.getallcat().subscribe((res2:CategorieInterface[])=>{
@@ -95,33 +95,33 @@ export class ProduitComponent implements OnInit {
 
         this.showNameRequiredError = false; 
       // Call the addCategory method and handle the result
-      console.log('Category is there!',categoryData);
+      // console.log('Category is there!',categoryData);
     } else {
       this.showNameRequiredError = true; 
 
-      console.log('product name is required!');
+      // console.log('product name is required!');
     }
     if (produitprix) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
 
       this.showNameRequiredError1 = false; 
       // Call the addCategory method and handle the result
-      console.log('Category is there!',categoryData);
+      // console.log('Category is there!',categoryData);
     } else {
       this.showNameRequiredError1 = true; 
 
-      console.log('product  is required!');
+      // console.log('product  is required!');
     }
 
     if (category_Name) {
       const categoryData = { name: produitName,produitprix:produitprix,category_Name:category_Name,description:description};
     this.showNameRequiredError2 = false; 
       // Call the addCategory method and handle the result
-      console.log('Category is there!',categoryData);
+      // console.log('Category is there!',categoryData);
     } else {
       this.showNameRequiredError2 = true; 
 
-      console.log('Category name is required!');
+      // console.log('Category name is required!');
     }
     if(this.showNameRequiredError1==false && this.showNameRequiredError2==false && this.showNameRequiredError==false) {
       this.showSuccessMessage = true;

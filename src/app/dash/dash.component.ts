@@ -49,8 +49,8 @@ export class DashComponent implements OnInit {
     const cat: CategorieInterface | null = await this.servicecat.getCatById(key);
 
     if (cat) {
-      console.log(cat.id,'ssssss');
-      console.log("hello khaled hhh")
+      // console.log(cat.id,'ssssss');
+      // console.log("hello khaled hhh")
       this.dialogRef.open(PopupComponent, {
         data: {
           categorie: {
@@ -60,16 +60,14 @@ export class DashComponent implements OnInit {
           }
         
       }});
-      console.log("hello khaled hhh2");
-    } else {
-      console.warn('Category not found for ID:', key);
-    }
+      // console.log("hello khaled hhh2");
+    } 
   }
   ngOnInit(): void {
     // this.getallcategore();
 
     this.servicecat.getallcat().subscribe((res:CategorieInterface[])=>{
-      console.log(res)
+      // console.log(res)
       this.catgeoriges=res;
     })
    
@@ -130,10 +128,10 @@ name2:string='';
       }, 2000);
       this.createCategorieForm.reset();
       // Call the addCategory method and handle the result
-      console.log('Category is there!',categoryData);
+      // console.log('Category is there!',categoryData);
     } else {
       this.showNameRequiredError = true; 
-      console.log('Category name is required!');
+      // console.log('Category name is required!');
     }
 
   }

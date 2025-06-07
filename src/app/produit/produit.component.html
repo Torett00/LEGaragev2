@@ -21,7 +21,9 @@
       @if((createProduitForm.get('name')?.invalid && createProduitForm.get('name')?.touched)||showNameRequiredError){
         <div class="requiredname">Name is required</div>
       }
-      
+      <label for="title" class="form-label cta">  Product NameArabic </label>
+  
+      <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="nameArabic" />
         <label for="title" class="form-label cta">   Product Prix :( with Out DT) </label>
         <input  placeholder="Categorie name" type="title" id="form2Example2" class="form-control inp"  formControlName="prix" />
         @if((createProduitForm.get('prix')?.invalid && createProduitForm.get('prix')?.touched)||showNameRequiredError1){

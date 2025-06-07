@@ -25,6 +25,13 @@
             @if (showNameRequiredError) {
               <div class="requiredname text-danger">Name is required</div>
             }
+            <label for="title" class="form-label cta">   Categorie Name Arabic</label>
+
+            <input  placeholder=" name" type="title" id="form2Example2" class="form-control inp"  formControlName="nameArabic" />
+            <!-- @if (createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched) {
+              <div class="requiredname">Name is required</div>
+            } -->
+            
         
             <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4 btnadd" type="submit">ADD </button>
             <!-- <div *ngIf="createCategorieForm.get('name')?.invalid && createCategorieForm.get('name')?.touched" 
@@ -45,6 +52,7 @@
               <tr>
           
                 <th>Name</th>
+                
                 <th> Update</th>
                 <th> Delete</th>
               </tr>
@@ -54,7 +62,8 @@
                 <!-- <td>{{cat.id}}</td> -->
                 <td class="partpx" (click)="navigateToProducts(cat.name)" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
                   {{cat.name}}
-                </td>              
+                </td>
+                            
                  <td class="partpx">  <button class="updatebutton" (click)="openDialog(cat.id??'')">Update</button></td>
              
                 <td class="partpx" >

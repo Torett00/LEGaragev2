@@ -22,6 +22,7 @@ export class PopupProductUpdateComponent {
     prix:0,
     categorie_name:'',
     description:'',
+    nameArabic:'',
   }
 
   prodconst: Iproduit={
@@ -30,6 +31,7 @@ export class PopupProductUpdateComponent {
     prix:0,
     categorie_name:'',
     description:'',
+    nameArabic:'',
   }
 
 
@@ -39,6 +41,7 @@ export class PopupProductUpdateComponent {
     prix:0,
     categorie_name:'',
     description:'',
+    nameArabic:'',
   }
   constructor(@Inject(MAT_DIALOG_DATA) public data: { product: Iproduit },private servicecat:CategorieserService,private serviceprod:ProduitservService,
   private dialogRef: MatDialogRef<PopupProductUpdateComponent> // Add this
@@ -57,6 +60,7 @@ this.prodconst.name=this.data.product.name;
 this.prodconst.prix=this.data.product.prix;
 this.prodconst.id=this.data.product.id;  
 this.prodconst.description=this.data.product.description;
+this.prodconst.nameArabic=this.data.product.nameArabic
     this.servicecat.getallcat().subscribe((res2:CategorieInterface[])=>{
       // console.log(res2)
       this.catgeoriges=res2;
@@ -68,7 +72,9 @@ this.prodconst.description=this.data.product.description;
     name: new FormControl<string>('',{ nonNullable:true }),
     categorie_name: new FormControl<string>('',{ nonNullable:true }),
     prix: new FormControl<string>('',{ nonNullable:true }),
-    description: new FormControl<string>('',{ nonNullable:true })
+    description: new FormControl<string>('',{ nonNullable:true }),
+    nameArabic: new FormControl<string>('',{ nonNullable:true })
+
 
   } );
   
@@ -91,7 +97,13 @@ this.prodconst.description=this.data.product.description;
     }else{
       this.newprod.categorie_name=this.UpdateProductForm.value.categorie_name??'';
     }
+    if(this.UpdateProductForm.value.nameArabic==''){
+      this.newprod.nameArabic=this.prodconst.nameArabic;
+    }
+    else{
+      this.newprod.nameArabic=this.UpdateProductForm.value.nameArabic??'';
 
+    }
     if(this.UpdateProductForm.value.prix==''){
       this.newprod.prix=this.prodconst.prix;
     }else{

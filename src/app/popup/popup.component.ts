@@ -14,10 +14,13 @@ import { CommonModule } from '@angular/common';
 export class PopupComponent {
   catobj: CategorieInterface={
     id:'',
-    name:''
+    name:'',
+    nameArabic:'',
   }
   UpdateCategorieForm=new FormGroup( {
-    name: new FormControl<string>('',{ nonNullable:true })
+    name: new FormControl<string>('',{ nonNullable:true }),
+    nameArabic: new FormControl<string>('',{ nonNullable:true })
+
   } );
   
   constructor(
@@ -43,33 +46,36 @@ export class PopupComponent {
     const updatedData:CategorieInterface = {
       name: this.UpdateCategorieForm.value.name??'',
       id:id,
+      nameArabic:this.UpdateCategorieForm.value.nameArabic??'',
     };
-    updatedData.name=this.UpdateCategorieForm.value.name??'';
-
-   if(updatedData.name==''){
+   
+    
+   if(updatedData.name==''&& updatedData.nameArabic!==''){
+    
+    updatedData.name=this.catobj.name;
+   }
+    else if (updatedData.name!=='' && updatedData.nameArabic==''){
+      
+      updatedData.nameArabic=this.catobj.nameArabic;
+    }
+   else {
     this.showNameRequiredError = true; 
-    
-   }else{
-    
-    this.servicecat.updatecat(id, updatedData)
-    .then(() => {
-      // console.log('Category updated!');
-      this.showNameRequiredError = false; 
-
-      // Optionally close modal or reset form here
-      this.showSuccessMessage=true;
-    this.successMessage = 'Category updated successfully!';
-    setTimeout(() => {
-      this.showSuccessMessage = false;
-    }, 2000);
-    })
-    .catch((error) => {
-      console.error('Error updating category:', error);
-    });
-    
-    
   
    }
+   this.servicecat.updatecat(id, updatedData)
+   .then(() => {
+     // console.log('Category updated!');
+     this.showNameRequiredError = false; 
+     // Optionally close modal or reset form here
+     this.showSuccessMessage=true;
+   this.successMessage = 'Category updated successfully!';
+   setTimeout(() => {
+     this.showSuccessMessage = false;
+   }, 2000);
+   })
+   .catch((error) => {
+     console.error('Error updating category:', error);
+   });
     
   }
   closeDialog(): void {

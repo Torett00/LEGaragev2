@@ -79,6 +79,7 @@ export class ProduitservService {
     prix:0,
     categorie_name:'',
     description:'',
+    nameArabic:'',
   }
   async getCatById(id: string): Promise<Iproduit | null> {
     try {
@@ -97,6 +98,7 @@ export class ProduitservService {
         this.catobj.categorie_name=data.categorie_name;
         this.catobj.prix=data.prix;
         this.catobj.description=data.description;
+        this.catobj.nameArabic=data.nameArabic;
         return this.catobj as Iproduit;
       } else {
         console.warn('No Product found with ID:', id);
@@ -114,7 +116,7 @@ export class ProduitservService {
       const catDocRef = doc(this.firestore, 'Products', catId);
       console.log('now im int last ',catDocRef.id)
   
-      console.log(updatedData,'ssss');
+      // console.log(updatedData,'ssss');
       await updateDoc(catDocRef, updatedData);
   
       console.log('product updated successfully!');

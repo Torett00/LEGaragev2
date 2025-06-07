@@ -71,6 +71,8 @@ export class ProduitComponent implements OnInit {
     categorie_name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     prix: new FormControl<number>(0,{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     description: new FormControl<string>('',{nonNullable:true ,validators:[Validators.required ]}),
+    nameArabic: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
+
   } );
 
   showNameRequiredError=false;
@@ -146,6 +148,7 @@ export class ProduitComponent implements OnInit {
       this.catobj.categorie_name = this.createProduitForm.value.categorie_name ?? '';
      this.catobj.prix=this.createProduitForm.value.prix ?? 0;
      this.catobj.description=this.createProduitForm.value.description??'';
+     this.catobj.nameArabic=this.createProduitForm.value.nameArabic??'';
     } else {
       this.catobj.name = ''; // Or another default value
     }
@@ -159,6 +162,7 @@ export class ProduitComponent implements OnInit {
     prix:0,
     categorie_name:'',
     description:'',
+    nameArabic:'',
   }
   onDeleteCategorie(id:string){
     this.serviceprod.delete(id);

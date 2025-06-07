@@ -24,7 +24,7 @@
     </div>
 
     <div class="container" *ngFor="let cat of catgeoriges">
-      <h3 class="cafecat">{{cat.name}}</h3>
+      <h3 class="cafecat">{{cat.name}} <span class="namearabic" style="display: inline-block; float: right;">{{cat.nameArabic}}</span></h3>
       
       <ul class="list2">
         <!-- Filter products by category name -->
@@ -32,6 +32,7 @@
           <li class="item">
             <span class="dess">{{prod.name}}</span>
             <span class="prix">{{prod.prix}} TND</span>
+            <span class="namearabic">{{prod.nameArabic}} </span>
           </li>
           <li class="item2">{{prod.description}}</li>
         </div>

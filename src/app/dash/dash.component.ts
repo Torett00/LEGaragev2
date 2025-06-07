@@ -27,7 +27,9 @@ export class DashComponent implements OnInit {
 
   catobjaupdate: CategorieInterface={
     id:'',
-    name:''
+    name:'',
+    nameArabic:'',
+  
   }
   
   constructor(private servicecat:CategorieserService,private dialogRef : MatDialog,private router: Router) {}
@@ -77,22 +79,28 @@ export class DashComponent implements OnInit {
   
   catobj: CategorieInterface={
     id:'',
-    name:''
+    name:'',
+    nameArabic:'',
+    
   }
   
   createCategorieForm=new FormGroup( {
-    name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]})
+    name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
+    nameArabic: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]})
+
   } );
 
 
  addCategor(){
   const {value}= this.createCategorieForm
   
-  if (this.createCategorieForm.value.name !== undefined )  {
+  if (this.createCategorieForm.value.name !== undefined   &&this.createCategorieForm.value.nameArabic !==undefined)  {
     this.catobj.name = this.createCategorieForm.value.name;
+    this.catobj.nameArabic = this.createCategorieForm.value.nameArabic;
    
   } else {
-    this.catobj.name = ''; // Or another default value
+    this.catobj.name = ''; 
+    this.catobj.nameArabic = ''; // Or another default value
   }
   
   this.servicecat.addcat(this.catobj);
@@ -113,10 +121,11 @@ name2:string='';
    
  
     const categoryName = this.createCategorieForm.value.name; // Get the category name from the form
+    const categoryNamearbic = this.createCategorieForm.value.nameArabic; // Get the category name from the form
 
     // console.log('Category Name:', categoryName); // Log the category name (optional)
 
-    if (categoryName ) {
+    if (categoryName && categoryNamearbic) {
       const categoryData = { name: categoryName };
       this.addCategor();
       this.showNameRequiredError = false; 

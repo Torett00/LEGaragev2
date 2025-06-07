@@ -48,6 +48,8 @@
     }
     
     /* Category title styles */
+
+    
     .cafecat {
    
       padding: 12px 20px;
@@ -205,7 +207,8 @@
   
   
   .item {
-    display: flex;
+    display: grid;
+  grid-template-columns: 1fr auto 1fr;
     justify-content: space-between;  /* Spreads the item and price */
     align-items: center;             /* Aligns items vertically centered */
     color: rgb(0, 0, 0);
@@ -278,6 +281,11 @@ font-family: Monospace;
     
                      /* Aligns text to the right */
                      font-size: small;
+                     flex: 1;
+                     text-align: center;
+  }
+  .namearabic {
+    text-align: right;
   }
   .insta{
     position: absolute;

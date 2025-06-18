@@ -8,8 +8,8 @@
   .background {
    
       background-color: #DE9E36;  /* Example color */
-      /* background-image: linear-gradient(40deg,#DEB841 ,#F8F2DC); */
-      background-image: linear-gradient(40deg,#C42847 ,#DE3C4B);
+      background-image: linear-gradient(40deg,#DEB841 ,#F8F2DC);
+      /* background-image: linear-gradient(40deg,#C42847 ,#DE3C4B); */
       height: 100%;
         /* Ensure the background covers the whole viewport */
       margin: 0; 
@@ -45,6 +45,7 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       box-sizing: border-box; 
       overflow: hidden; /* Ensures child elements respect border-radius */  
+      /* opacity: 0.1; */
     }
     
     /* Category title styles */
@@ -54,8 +55,9 @@
    
       padding: 12px 20px;
       margin: 0;
-      background-color: #9DBEBB;
-      background-color: #000022;
+      /* background-color: #9DBEBB; */
+      /* background-color: #000022; */
+       background-color: #79592a;
       border: #ffffff solid 3px; /* Light gray background */
       color: #ffffff;
       font-size: 18px;

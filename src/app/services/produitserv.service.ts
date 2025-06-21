@@ -76,7 +76,7 @@ export class ProduitservService {
   catobj: Iproduit={
     id:'',
     name:'',
-    prix:0,
+    prix:'',
     categorie_name:'',
     description:'',
     nameArabic:'',

@@ -19,7 +19,7 @@ export class PopupProductUpdateComponent {
   catobj: Iproduit={
     id:'',
     name:'',
-    prix:0,
+    prix:'',
     categorie_name:'',
     description:'',
     nameArabic:'',
@@ -28,7 +28,7 @@ export class PopupProductUpdateComponent {
   prodconst: Iproduit={
     id:'',
     name:'',
-    prix:0,
+    prix:'',
     categorie_name:'',
     description:'',
     nameArabic:'',
@@ -38,7 +38,7 @@ export class PopupProductUpdateComponent {
   newprod: Iproduit={
     id:'',
     name:'',
-    prix:0,
+    prix:'',
     categorie_name:'',
     description:'',
     nameArabic:'',
@@ -104,11 +104,11 @@ this.prodconst.nameArabic=this.data.product.nameArabic
       this.newprod.nameArabic=this.UpdateProductForm.value.nameArabic??'';
 
     }
-    if(this.UpdateProductForm.value.prix==''){
-      this.newprod.prix=this.prodconst.prix;
-    }else{
-      this.newprod.prix = Number(this.UpdateProductForm.value.prix);
-    }
+   if (this.UpdateProductForm.value.prix == '' || this.UpdateProductForm.value.prix == undefined) {
+  this.newprod.prix = this.prodconst.prix;
+} else {
+  this.newprod.prix = this.UpdateProductForm.value.prix as string; // Type assertion
+}
     if(this.UpdateProductForm.value.description==''){
       this.newprod.description=this.prodconst.description;
     }else{

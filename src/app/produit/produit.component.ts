@@ -69,7 +69,7 @@ export class ProduitComponent implements OnInit {
   createProduitForm=new FormGroup( {
     name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     categorie_name: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
-    prix: new FormControl<number>(0,{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
+    prix: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
     description: new FormControl<string>('',{nonNullable:true ,validators:[Validators.required ]}),
     nameArabic: new FormControl<string>('',{ nonNullable:true ,validators:[Validators.required ,Validators.maxLength(30)]}),
 
@@ -146,7 +146,7 @@ export class ProduitComponent implements OnInit {
     if (this.createProduitForm.value.name !== undefined )  {
       this.catobj.name = this.createProduitForm.value.name;
       this.catobj.categorie_name = this.createProduitForm.value.categorie_name ?? '';
-     this.catobj.prix=this.createProduitForm.value.prix ?? 0;
+     this.catobj.prix=this.createProduitForm.value.prix ?? '';
      this.catobj.description=this.createProduitForm.value.description??'';
      this.catobj.nameArabic=this.createProduitForm.value.nameArabic??'';
     } else {
@@ -159,7 +159,7 @@ export class ProduitComponent implements OnInit {
    catobj: Iproduit={
     id:'',
     name:'',
-    prix:0,
+    prix:'',
     categorie_name:'',
     description:'',
     nameArabic:'',
